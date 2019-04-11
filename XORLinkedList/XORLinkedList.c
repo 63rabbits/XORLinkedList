@@ -138,7 +138,7 @@ void *findElementOnXLList(XLL_t *list, int (*comp)(void*, void*), void *element)
     // Block illegal parameters.
     if (isEmptyXLList(list)) return NULL;
     
-    XLL_TRACKER_t *tracker = getTrackerAtHeadOnXLList(list);
+    XLL_TRACKER_t *tracker = getTrackerHeadOnXLList(list);
     while (tracker != NULL) {
         XLLC_t *cell = tracker->current;
         int check = (*comp)(cell->element, element);
@@ -156,7 +156,7 @@ void *findMinOnXLList(XLL_t *list, int (*comp)(void*, void*)) {
     // Block illegal parameters.
     if (isEmptyXLList(list)) return NULL;
     
-    XLL_TRACKER_t *tracker = getTrackerAtHeadOnXLList(list);
+    XLL_TRACKER_t *tracker = getTrackerHeadOnXLList(list);
     XLLC_t *min = tracker->current;
     while (tracker != NULL) {
         XLLC_t *cell = tracker->current;
@@ -174,7 +174,7 @@ void *findMaxOnXLList(XLL_t *list, int (*comp)(void*, void*)) {
     // Block illegal parameters.
     if (isEmptyXLList(list)) return NULL;
     
-    XLL_TRACKER_t *tracker = getTrackerAtHeadOnXLList(list);
+    XLL_TRACKER_t *tracker = getTrackerHeadOnXLList(list);
     XLLC_t *max = tracker->current;
     while (tracker != NULL) {
         XLLC_t *cell = tracker->current;
@@ -202,7 +202,7 @@ XLLC_t *createCellOnXLList(void *element) {
     return cell;
 }
 
-XLL_TRACKER_t *getTrackerAtHeadOnXLList(XLL_t *list) {
+XLL_TRACKER_t *getTrackerHeadOnXLList(XLL_t *list) {
     XLL_TRACKER_t *tracker = malloc(sizeof(XLL_TRACKER_t));
     if (tracker == NULL) return NULL;
     
@@ -215,7 +215,7 @@ XLL_TRACKER_t *getTrackerAtHeadOnXLList(XLL_t *list) {
     return tracker;
 }
 
-XLL_TRACKER_t *getTrackerAtTailOnXLList(XLL_t *list) {
+XLL_TRACKER_t *getTrackerTailOnXLList(XLL_t *list) {
     XLL_TRACKER_t *tracker = malloc(sizeof(XLL_TRACKER_t));
     if (tracker == NULL) return NULL;
     
